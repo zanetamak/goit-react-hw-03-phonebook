@@ -14,7 +14,7 @@ import Filter from './Filter/Filter';
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
         ],
-        filter: '',
+      filter: '',
       }
   }
    
@@ -34,14 +34,16 @@ import Filter from './Filter/Filter';
     }
   }
 // metoda cyklu życiowego, która jest wywoływana po każdej aktualizacji komponentu.
-  componentDidUpdate(prevState) {
-    // Sprawdza, czy stan contacts został zmieniony w porównaniu do poprzedniego stanu 
-    if (prevState.contacts !== this.state.contacts) {
-      // Jeżeli tak, to oznacza to, że kontakt został dodany, zmieniony lub usunięty, i wtedy aktualizowany jest lokalny magazyn 
-      const json = JSON.stringify(this.state.contacts);
-      localStorage.setItem('contacts', json);
+   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.someProp !== this.props.someProp) {
+      // Sprawdza, czy stan contacts został zmieniony w porównaniu do poprzedniego stanu 
+      if (prevState.contacts !== this.state.contacts) {
+        const json = JSON.stringify(this.state.contacts);
+        localStorage.setItem('contacts', json);
+      }
     }
   }
+
 
 
   
